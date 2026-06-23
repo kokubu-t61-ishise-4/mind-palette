@@ -1,73 +1,33 @@
-# React + TypeScript + Vite
+# MindPalette
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 概要
+頭の中のモヤモヤや悩みをAIとの対話を通じて整理し、Claude や Gemini に相談するためのプロンプトを生成するWebアプリです。
+ぼんやりした考えでもAIが共感しながら質問を重ね、最終的に言語化された形でまとめてくれます。
+整理された内容とプロンプトはワンクリックでコピーでき、そのまま他のAIに渡せます。
 
-Currently, two official plugins are available:
+## 主な機能
+- テーマ選択: 悩み・モヤモヤ、やりたいこと・目標、企画・アイデア、仕事の相談、人間関係、将来・キャリア、自分自身を知りたいの7テーマ
+- 自由入力対応: テーマを選ばず自由に話しかけると、AIが内容からテーマを自動判定
+- 対話による深掘り: AIが共感しながら質問を重ね、考えを引き出す（選択肢または自由入力で回答）
+- AIリクエスト指定: まとめ時に「アドバイスがほしい」「整理してほしい」等、AIにしてほしいことを指定
+- 思考の整理出力: 対話内容をメモとして使える形式に整理
+- プロンプト生成: Claude/Gemini用の相談プロンプトを自動生成
+- ワンクリックコピー: 整理結果とプロンプトをそれぞれコピーボタンで取得
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 使い方
+1. 7つのテーマから選ぶか、自由に話しかける
+2. AIの質問に対して選択肢を選ぶか、自由に入力して回答
+3. 対話を重ねて考えを深掘り
+4. 「まとめ／プロンプト作成に進む」ボタンをクリック
+5. AIにどうしてほしいか（アドバイス、整理、別視点など）を指定
+6. 生成された「悩みの整理」と「Claude/Gemini用プロンプト」をコピーして活用
 
-## React Compiler
+## 技術スタック
+- **フレームワーク**: React 19
+- **言語**: TypeScript
+- **ビルドツール**: Vite 8
+- **AI**: Groq API (Llama 3.3 70B)
+- **ホスティング**: Netlify
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## URL
+https://mind-plaette.netlify.app/
